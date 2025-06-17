@@ -1,0 +1,462 @@
+    <!DOCTYPE html>
+    <html lang="ru" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>🇺🇦 Карина Варганова | Психолог Днепр, Украина</title>
+        <link href="./dist/output.css" rel="stylesheet">
+    </head>
+    <body class="bg-neutral-light text-neutral-dark">
+        
+        <!-- Шапка с логотипом и меню -->
+        <header class="fixed-header">
+
+            <div class="container flex justify-between items-center py-4">
+                <div class="text-lg font-bold text-white flex items-center">
+                    <!-- Если будет изображение логотипа -->
+                    <!-- <img src="images/logo.svg" alt="Карина Варганова - психолог в Днепре, Украина" class="h-10"> -->
+                    <!-- Или только текст -->
+                    <span>Карина Варганова</span>
+                </div>
+                <div class="flex items-center">
+                    <!-- <a href="tel:380506191220" class="call-button"> -->
+                    <a href="tel:380506191220" class="btn btn-secondary btn-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"> </path></svg>
+                        &nbsp; 050 619 12 20
+                    </a>
+                    
+                    <button id="menu-toggle" class="p-2 ml-2 w-20 rounded-md bg-primary-dark hover:bg-primary-light text-white">
+                        ☰
+                    </button>
+                </div>
+            </div>
+            <nav id="mobile-menu">
+                <div class="flex flex-col items-center py-6">
+                    <!-- Навигационные ссылки -->
+                    <div class="mb-6 w-full">
+                        <div class="flex flex-col items-center space-y-6 py-4">
+                            <a href="#" class="text-white text-lg hover:text-neutral-light">Главная</a>
+                            <a href="#" class="text-white text-lg hover:text-neutral-light">Услуги</a>
+                            <a href="#" class="text-white text-lg hover:text-neutral-light">Контакты</a>
+                            <a href="#" class="text-white text-lg hover:text-neutral-light">О нас</a>
+                            <a href="#" class="text-white text-lg hover:text-neutral-light">Блог</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Разделитель -->
+                    <div class="w-3/4 h-px bg-white bg-opacity-10 my-4"></div>
+                    
+                    <!-- Социальные сети -->
+                    <div class="flex justify-center space-x-6 my-6">
+                        <a href="https://t.me/karinavarganova" class="text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                        </a>
+                        <a href="#" class="text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                        <a href="#" class="text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+                        </a>
+                    </div>
+                    
+                    <!-- Разделитель -->
+                    <div class="w-3/4 h-px bg-white bg-opacity-10 my-4"></div>
+                    
+                    <!-- Кнопки контактов -->
+                    <div class="flex flex-col items-center space-y-4 mt-4">
+                        <a href="tel:380506191220" class="btn btn-secondary btn-icon w-full sm:w-64">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            050 619 12 20
+                        </a>
+                        <a href="https://t.me/karinavarganova" class="btn btn-secondary btn-icon w-full sm:w-64">
+                            <img src="images/telegram_icon.svg" alt="Telegram" class="mr-2 w-5 h-5">
+                            Написать в телеграм
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+    <!-- Главный экран -->
+    <section class="flex items-end justify-center h-screen bg-neutral-dark pt-[60px]">
+        <div class="hero-content px-6 md:px-12 lg:px-16 space-y-6 text-center flex flex-col items-center pb-[80px]">
+            <!-- Блок информации о психологе -->
+            <div class="speaker-info flex flex-col items-center">
+                <img src="images/speaker.jpg" alt="Карина Варганова Психолог Днепр" class="hero-item w-40 h-40 rounded-full border-4 border-white shadow-lg mb-6">
+                <h1 class="hero-item heading-xl text-neutral-light text-left mb-4">Карина Варганова</h1>
+                <p class="hero-item text-lg text-neutral-light text-left">
+                    Практикующий психолог в сфере зависимостей и зависимых отношений
+                </p>
+    <!--             <p class="hero-item text-lg text-neutral-light text-left">
+                    Приглашаю вас на открытый вебинар “Жизнь на паузе”
+                </p> -->
+            </div>
+            
+            <!-- Разделитель между блоками -->
+            <div class="hero-item w-3/4 h-px bg-white bg-opacity-30 my-10"></div>
+            
+            <!-- Блок призыва к действию -->
+    <div class="cta-block flex flex-col items-center">
+        <p class="hero-item italic text-lg text-neutral-light text-left mb-6">
+            <!-- Для записи на консультацию напишите мне в телеграм или позвоните -->
+            Для участия в вебинаре напишите мне в Telegram или просто перейдите по ссылке в канал. Вся информация — там.
+        </p>
+        <div class="hero-item flex flex-col sm:flex-row gap-4 items-center">
+            <a href="#course-section" class="btn btn-secondary btn-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+                    <path d="m6 9 6 6 6-6"/>
+                </svg>
+                Подробнее про вебинар
+            </a>
+            <a href="https://t.me/karinavarganova" class="btn btn-primary btn-icon">
+                <img src="images/telegram.svg" alt="Telegram" class="mr-2 w-5 h-5"> Написать в телеграм
+            </a>
+        </div>
+    </div>
+        </div>
+    </section> 
+
+        <!-- Контент -->
+    <main class="container py-12">
+        <section id="course-section" class="section-block p-6 md:p-8 rounded-lg shadow-md my-12">
+                <h2 class="text-3xl font-bold mb-6">Вебинар "Жизнь на паузе"</h2>
+                <p class="text-base mb-6">Вебинар  —  первая встреча в огромной теме. Это начало глубокой, последовательной работы,  необходимой для ясного понимания вопросов, связанных с зависимостью и созависимостью.</p>
+                <!-- <p class="text-base mb-6">Он о том, как посвящая свою жизнь другому человеку всецело, мы незаметно теряем свою. И почему делая, казалось бы благое дело, часто ощущаем усталость и беспросветность.</p> -->        
+                <p class="text-base mb-6">Вебинар для тех, кто живёт рядом с зависимым человеком: партнёр, родитель, взрослый ребёнок.
+    </p>
+                <p class="text-base mb-6"> Для регистрации и участия в вебинаре переходите по ссылке в телеграм канал.</p>
+            
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="block w-full flex items-center">
+                        <img src="images/psychologistcover.png" alt="Психолог по зависимым отношениям Варганова Карина" class="w-full max-w-sm rounded-lg shadow-lg object-cover">
+                        <!-- <img src="images/psychologistcover.png" alt="Психолог по зависимым отношениям Варганова Карина" class="w-full h-full object-cover animate-base visible"> -->
+                    </div>
+                    
+                    <div class="block">
+                        <h3 class="text-xl font-semibold mb-4">На вебинаре мы узнаем:</h3>         
+                            <ul class="list-none space-y-2 divide-y divide-neutral-light">
+                                <li class="list-item-icon pt-2 first:pt-0">Что делать, когда посвящая свою жизнь другому человеку всецело, есть ощущение, что в своей жизни что-то происходит не так.</li>
+                                <li class="list-item-icon pt-2">Почему делая, казалось бы благое дело, часто ощущаем усталость и беспросветность.</li>
+                                <li class="list-item-icon pt-2">Как изменить эту ситуацию?</li>
+                            </ul>
+                            <!-- <button id="certificatesBtn" class="mt-4 bg-primary-dark text-white py-2 px-4 rounded-lg hover:bg-neutral-dark transition">Перейти</button> -->
+    <!--                         <a href="https://t.me/karinavarganova" class="mt-4 bg-primary-dark text-white py-2 px-4 rounded-lg hover:bg-neutral-dark transition inline-flex items-center">
+                                <img src="images/telegram_icon.svg" alt="Telegram" class="mr-2 w-5 h-5"> Перейти
+                            </a> -->
+                            <a href="https://t.me/karinavarganova" class="mt-4 bg-primary-dark text-white py-2 px-4 rounded-lg hover:bg-neutral-dark transition inline-flex items-center">
+                                <img src="images/telegram.svg" alt="Telegram" class="mr-2 w-5 h-5"> 
+                                Перейти к вебинару
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                </svg>
+                            </a>
+                    </div>
+                </div>
+
+        </section>
+        <section class="section-block p-6 md:p-8 rounded-lg shadow-md my-12">
+            <h2 class="heading-lg mb-6">Обо мне</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="block">
+                    <p class="item mb-4">Я верю в то, что человеческие возможности очень велики!</p>
+                    <p class="item mb-4">Мне приходилось несколько раз начинать жить заново,  и я хорошо понимаю, какой это колоссальный труд. И в начале каждой начатой дороги  не было уверенности, что дойду. Поэтому знаю точно, что этот путь по силам любому, кто хочет поменять что- то в своей жизни.</p>
+                    <p class="item">Все, чему я стараюсь научить человека, я умею делать сама, при этом  не оставлю  клиента ни на каком отрезке терапии.</p>
+                </div>
+                <!-- Заменить весь блок с видео на этот -->
+                <div class="block w-full md:w-full lg:w-4/5">
+                    <div class="relative aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg border-2 border-neutral-light">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/Y6bgBftIfis" title="О моем подходе к психологической работе" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="absolute inset-0 pointer-events-none rounded-lg border border-white border-opacity-10"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Секция "В каких случаях вы можете ко мне обратиться" -->
+        <section class="section-block p-6 md:p-8 rounded-lg shadow-md my-12">
+                <h2 class="heading-lg mb-6">В каких случаях вы можете ко мне обратиться:</h2>
+                
+                <ol class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 list-none">
+                    <li class="list-numbered-item"><span>Вопросы зависимости и созависимости</span></li>
+                    <li class="list-numbered-item"><span>Химическая зависимость</span></li>
+                    <li class="list-numbered-item"><span>Страхи, тревожные расстройства</span></li>
+                    <li class="list-numbered-item"><span>Неуверенность в себе, чувство беспомощности</span></li>
+                    <li class="list-numbered-item"><span>Психологическая помощь в условиях войны</span></li>
+                    <li class="list-numbered-item"><span>Невротическое переедание</span></li>
+                    <li class="list-numbered-item"><span>Нарушенные отношения  со взрослыми детьми</span></li>
+                    <li class="list-numbered-item"><span>Проживание утраты и потери</span></li>
+                    <li class="list-numbered-item"><span>Прохождение трудных этапов в жизни</span></li>
+                </ol>
+        </section>
+
+        <section class="section-block p-6 md:p-8 rounded-lg shadow-md my-12">
+                <h2 class="text-3xl font-bold mb-6">Задачи терапии</h2>
+                
+                <p class="text-base mb-6">Психолог работает с мыслями, отношением к ситуации, корректирует искажения и ошибки мышления. В результате у клиента появляются новые стереотипы поведения. Проще говоря, клиент начинает справляться с ситуациями, которые раньше вызывали стресс. У него меняется качество жизни, когда важные вопросы начинают решаться, а не откладываются на потом. Меняется отношение к себе, появляется вера в свои возможности.</p>
+            
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="block w-full flex items-center">
+                        <img src="images/therapytask.png" alt="задачи терапии у психолога" class="w-full max-w-sm rounded-lg shadow-lg object-cover">
+                    </div>
+                    
+                    <div class="block">
+                        <h3 class="text-xl font-semibold mb-4">Практический опыт:</h3>         
+                            <ul class="list-none space-y-2 divide-y divide-neutral-light">
+                                <li class="list-item-icon pt-2 first:pt-0">Психолог, психотерапевт, гештальт-терапевт в обучении</li>
+                                <li class="list-item-icon pt-2">Наличие большого опыта работы индивидуального консультирования и психотерапии</li>
+                                <li class="list-item-icon pt-2">Опыт ведения психотерапевтических групп с 2019 года</li>
+                                <li class="list-item-icon pt-2">Постоянное повышение квалификации на интенсивах</li>
+                            </ul>
+                            <button id="certificatesBtn" class="mt-4 bg-primary-dark text-white py-2 px-4 rounded-lg hover:bg-neutral-dark transition">Награды и сертификаты</button>
+                    </div>
+                </div>
+
+        </section>
+    <!-- Модальное окно с улучшенной каруселью -->
+    <div id="certificatesModal" class="modal hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+        <div class="modal-content bg-white p-6 rounded-lg shadow-lg relative max-w-3xl w-full mx-4">
+            <span class="close absolute top-2 right-2 text-2xl cursor-pointer hover:text-primary-dark">&times;</span>
+            <h3 class="text-xl font-bold mb-4 text-center">Награды и сертификаты</h3>
+            
+            <!-- Контейнер карусели без фиксированных кнопок навигации в HTML -->
+            <div class="carousel-container overflow-hidden relative">
+                <div class="carousel flex space-x-4 py-2 px-2">
+                    <img src="images/pics/cert1.png" alt="Сертификат 1" class="certificate-image">
+                    <img src="images/pics/cert2.png" alt="Сертификат 2" class="certificate-image">
+                    <img src="images/pics/cert3.png" alt="Сертификат 3" class="certificate-image">
+                    <img src="images/pics/cert4.png" alt="Сертификат 4" class="certificate-image">
+                    <img src="images/pics/cert5.png" alt="Сертификат 5" class="certificate-image">
+                    <img src="images/pics/cert1.png" alt="Сертификат 6" class="certificate-image">
+                </div>
+                <!-- Кнопки навигации добавляются через JavaScript -->
+            </div>
+        </div>
+    </div>
+    <section class="section-fullwidth bg-primary-dark py-12">
+      <div class="container">
+        <h2 class="text-3xl font-bold text-white">Услуги и стоимость</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6 mt-8">
+            <!-- Индивидуальная терапия -->
+            <div class="bg-neutral-light p-6 rounded-lg shadow flex flex-col min-h-[400px]">
+              <h3 class="text-xl font-semibold text-neutral-dark">Индивидуальная взрослая терапия</h3>
+              <p class="text-neutral-default mt-2">
+                Работаем по вашему личному запросу или с общим состоянием.
+              </p>
+              <div class="mt-auto pt-4">
+                <div class="border-t border-neutral-dark pt-4">
+                  <p class="text-neutral-dark">Стоимость сессии: <span class="font-bold">2000 грн/час</span></p>
+                  <p class="text-neutral-dark">Продолжительность: <span class="font-bold">1 час</span></p>
+                </div>
+                <button class="mt-4 bg-primary-dark text-white py-2 px-4 rounded-lg w-full hover:bg-neutral-dark transition">
+                  Записаться на консультацию
+                </button>
+              </div>
+            </div>
+
+            <!-- Мероприятия для групп -->
+            <div class="bg-neutral-light p-6 rounded-lg shadow flex flex-col min-h-[400px]">
+              <h3 class="text-xl font-semibold text-neutral-dark">Мероприятие для групп: семинары, лекции</h3>
+              <p class="text-neutral-default mt-2">
+                Формат семинарского занятия, лекции или групповой терапии.
+              </p>
+              <a href="#" id="groupTopicsLink" class="text-primary-light font-semibold inline-block mt-2">Примеры тем для групповой терапии <span class="arrow">↗</span></a>
+              <div class="mt-auto pt-4">
+                <div class="border-t border-neutral-dark pt-4">
+                  <p class="text-neutral-dark">Стоимость сессии: <span class="font-bold">от 3000 грн/час</span></p>
+                  <p class="text-neutral-default">Зависит от формата, продолжительности и количества участников.</p>
+                </div>
+                <button class="mt-4 bg-primary-dark text-white py-2 px-4 rounded-lg w-full hover:bg-neutral-dark transition">
+                  Дізнатися умови
+                </button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+            <!-- Модальное окно для "Примеры тем для групповой терапии" -->
+        <div id="groupTopicsModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+            <div class="modal-content bg-white p-6 rounded-lg shadow-lg relative">
+                <span class="close close-groupTopics absolute top-2 right-2 cursor-pointer">&times;</span>
+                <ul class="list-disc pl-5">
+                    <li>Психологическая помощь гражданским во время войны.</li>
+                    <li>Тревога и ее преодоление.</li>
+                    <li>Поиск опор и внутренней стабильности для людей, столкнувшихся с последствиями войны.</li>
+                    <li>Повышение самоценности и уверенности в себе.</li>
+                    <li>Работа с чувством вины и стыда.</li>
+                    <li>Преодоление страхов и фобий.</li>
+                                </ul>
+            </div>
+        </div>
+    <section class="section-block p-6 md:p-8 rounded-lg shadow-md my-12 animate-base">
+        <h2 class="heading-lg mb-6">Как проходит консультация?</h2>
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div class="block order-2 md:order-1">
+                <p class="item mb-4">Консультация проходит индивидуально, в комфортном темпе для клиента. Мы создаем безопасное пространство, где вы можете открыто говорить о своих чувствах, переживаниях и потребностях без осуждения.</p>
+                
+                <p class="item">Каждая встреча строится на принципах доверия и взаимного уважения. Я помогаю клиенту исследовать глубинные причины его проблем, найти внутренние ресурсы и разработать стратегию личностного роста и изменений.</p>
+            </div>
+
+            <div class="block w-full md:w-full lg:w-4/5 order-1 md:order-2 justify-self-end">
+                <div class="relative rounded-lg overflow-hidden shadow-lg border-2 border-neutral-light">
+                    <img src="images/consult_how2.png" alt="Процесс психологической консультации" class="w-full max-w-md md:max-w-lg rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-block p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">Отзывы подписчиков</h2>
+        <div class="carousel-container overflow-hidden relative">
+            <div class="reviews-carousel carousel flex space-x-4 py-2 px-2">
+                <div class="review-item flex-shrink-0 p-2 bg-neutral rounded-lg w-full md:w-80">
+                    <img src="images/pics/Testims1.png" alt="Отзыв подписчика 1" class="w-full h-auto rounded-md mb-3">
+                    <div class="text-center">
+                        <p class="font-semibold text-neutral-dark">@anastasia_k</p>
+                        <p class="text-sm text-neutral-default">28 лет</p>
+                    </div>
+                </div>
+
+                <div class="review-item flex-shrink-0 p-2 bg-neutral rounded-lg w-full md:w-80">
+                    <img src="images/pics/Testims2.png" alt="Отзыв подписчика 2" class="w-full h-auto rounded-md mb-3">
+                    <div class="text-center">
+                        <p class="font-semibold text-neutral-dark">Мария С.</p>
+                        <p class="text-sm text-neutral-default">35 лет</p>
+                    </div>
+                </div>
+
+                <div class="review-item flex-shrink-0 p-2 bg-neutral rounded-lg w-full md:w-80">
+                    <img src="images/pics/Testims3.png" alt="Отзыв подписчика 3" class="w-full h-auto rounded-md mb-3">
+                    <div class="text-center">
+                        <p class="font-semibold text-neutral-dark">@olya_mind</p>
+                        <p class="text-sm text-neutral-default">42 года</p>
+                    </div>
+                </div>
+
+                <div class="review-item flex-shrink-0 p-2 bg-neutral rounded-lg w-full md:w-80">
+                    <img src="images/pics/Testims4.png" alt="Отзыв подписчика 4" class="w-full h-auto rounded-md mb-3">
+                    <div class="text-center">
+                        <p class="font-semibold text-neutral-dark">Дмитрий</p>
+                        <p class="text-sm text-neutral-default">31 год</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+                
+        <section class="section-block p-6 rounded-lg shadow-md mt-8">
+            <h2 class="heading-lg">Частые вопросы</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question w-full flex items-center justify-between p-4 text-left bg-neutral-light rounded-lg">
+                        <span class="font-semibold">Как записаться на консультацию?</span>
+                        <svg class="faq-icon transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m6 9 6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer hidden">
+                        <div class="p-4 bg-white rounded-b-lg border-t border-neutral-dark border-opacity-20">
+                            <p class="text-neutral-dark">Вы можете записаться на консультацию через Telegram или по телефону.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item mt-4">
+                    <button class="faq-question w-full flex items-center justify-between p-4 text-left bg-neutral-light rounded-lg">
+                        <span class="font-semibold">Сколько стоит консультация?</span>
+                        <svg class="faq-icon transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m6 9 6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer hidden">
+                        <div class="p-4 bg-white rounded-b-lg border-t border-neutral-dark border-opacity-20">
+                            <p class="text-neutral-dark">Стоимость консультации указана в прайсе. Для уточнения актуальных цен, пожалуйста, свяжитесь со мной.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+        
+        <!-- Футер -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="footer-container">
+            <!-- Сначала широкий блок про психологическую помощь -->
+            <div class="footer-column w-full mb-6">
+                <h3>Обо мне</h3>
+                <p class="text-neutral mb-4">Психологическая помощь в сфере зависимости и зависимых отношений.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between gap-8 md:col-span-2">
+                <!-- Первая колонка футера -->
+                <div class="footer-column w-full md:w-1/3">
+                    
+                    <!-- Блок Медиаканалы -->
+                    <div class="footer-column">
+                        <h3>Медиаканалы</h3>
+                        <div class="flex flex-col">
+                            <a href="#" class="flex items-center mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+                                YouTube канал
+                            </a>
+                            <a href="https://t.me/karinavarganova" class="flex items-center mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                                Telegram канал
+                            </a>
+                            <a href="#" class="flex items-center mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                                Instagram канал
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Остальные колонки без изменений -->
+                <div class="footer-column w-full md:w-1/3">
+                    <h3>Навигация</h3>
+                    <a href="#">Главная</a>
+                    <a href="#">Услуги</a>
+                    <a href="#">Контакты</a>
+                    <a href="#">Блог</a>
+                    <a href="#">О нас</a>
+                </div>
+                
+                <div class="footer-column w-full md:w-1/3">
+                    <h3>Контакты</h3>
+                    <a href="tel:380506191220" class="flex items-center mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        050 619 12 20
+                    </a>
+                    <a href="https://t.me/karinavarganova" class="flex items-center mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                        Telegram
+                    </a>
+                    <a href="mailto:info@example.com" class="flex items-center mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        info@example.com
+                    </a>
+                    <div class="flex items-center mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>г. Днепр, Украина</span>
+                        <span class="ml-2">🇺🇦</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+        <!-- Кнопка "Вернуться наверх" -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary bg-opacity-70 text-white p-3 rounded-full shadow-lg opacity-0 transition-opacity duration-300 w-16 h-16 flex items-center justify-center">
+        <svg class="circle-progress absolute inset-0" width="64" height="64" viewBox="0 0 64 64">
+            <circle class="circle-bg" cx="32" cy="32" r="29" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="3"></circle>
+            <circle class="circle-fg" cx="32" cy="32" r="29" fill="none" stroke="white" stroke-width="3" transform="rotate(-90 32 32)"></circle>
+        </svg>
+        <svg class="arrow relative z-10" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+
+        <!-- Подключаем JavaScript -->
+        <script src="src/main.js" defer></script>
+
+    </body>
+    </html>
