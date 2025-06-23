@@ -47,6 +47,11 @@ body, html {
     margin-right: -50vw;
 }
 
+.hero-section {
+  @apply min-h-screen flex items-end justify-center bg-neutral-dark;
+  padding-top: 10vh; /* Точно под фиксированную шапку */
+}
+
 .container {
     @apply max-w-[1200px] mx-auto px-4;
 }

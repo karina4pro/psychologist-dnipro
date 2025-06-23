@@ -257,20 +257,29 @@ function initCarousel(carouselSelector = ".carousel", itemSelector = "img") {
     });
     
     // События для мобильных устройств
-    let touchStartX;
+let touchStartX, touchStartY;
     
-    carousel.addEventListener("touchstart", (e) => {
-        touchStartX = e.touches[0].clientX;
-        scrollLeft = carousel.scrollLeft;
-    });
+carousel.addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY; // ДОБАВИТЬ ЭТУ СТРОКУ
+    scrollLeft = carousel.scrollLeft;
+});
     
-    carousel.addEventListener("touchmove", (e) => {
-        if (!touchStartX) return;
-        const touchX = e.touches[0].clientX;
+carousel.addEventListener("touchmove", (e) => {
+    if (!touchStartX) return;
+    const touchX = e.touches[0].clientX;
+    const touchY = e.touches[0].clientY;
+    const deltaX = Math.abs(touchX - touchStartX);
+    const deltaY = Math.abs(touchY - touchStartY);
+    
+    // Только если четкий горизонтальный свайп
+    if (deltaX > deltaY && deltaX > 15) {
         const walk = (touchX - touchStartX) * 1.5;
         carousel.scrollLeft = scrollLeft - walk;
         e.preventDefault();
-    });
+    }
+    // Иначе разрешаем вертикальный скролл страницы
+});
     
     carousel.addEventListener("touchend", () => {
         touchStartX = null;
