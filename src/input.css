@@ -88,10 +88,6 @@ body, html {
     @apply fixed top-0 left-0 right-0 z-50 h-[10vh] bg-neutral-dark bg-opacity-80 
            backdrop-blur border-b border-white border-opacity-10 transition-transform duration-500;
   }
-  
-/*  .fixed-header.-translate-y-full {
-    @apply -translate-y-full;
-  }*/
 
   .fixed-header.-translate-y-full {
     transform: translateY(-100%);
@@ -118,6 +114,16 @@ body, html {
   #mobile-menu.open a:nth-child(3) { transition-delay: 0.3s; }
   #mobile-menu.open a:nth-child(4) { transition-delay: 0.4s; }
   #mobile-menu.open a:nth-child(5) { transition-delay: 0.5s; }
+
+.menu-icon {
+    @apply block w-full h-full flex items-center justify-center;
+    font-family: monospace;
+    font-size: 18px;
+    line-height: 1;
+    color: white !important;  /* Принудительно белый */
+    text-shadow: none;        /* Убирает тени */
+    -webkit-font-smoothing: antialiased; /* Сглаживание */
+}
   
   /* Кнопка звонка */
   .call-button {
@@ -323,4 +329,13 @@ ol li {
   @apply focus:outline-none transition-colors;
   z-index: 10;
 }
+
+  body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .font-display {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 600;
+  }
 }
