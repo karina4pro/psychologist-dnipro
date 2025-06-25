@@ -13,13 +13,12 @@
   }
   
   /* Применение базовой анимации к элементам */
-  .hero-item,
-  .section-block,
-  .block,
-  .item {
-    @apply animate-base;
-  }
-
+.hero-item,
+.section-block,
+.block,
+.item {
+  @apply animate-base;
+}
 
 .section-block {
   @apply animate-base rounded-lg shadow-md my-12 bg-gradient-to-b from-white to-neutral-light;
