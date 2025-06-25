@@ -1,31 +1,21 @@
 module.exports = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,css}",
-    "./*.js"
-  ],
+content: [
+  "./index.html", 
+  "./src/**/*.{html,js,css}",
+  "./**/*.html"
+],
   
-  safelist: [
-    'hero-section',
-    'hero-item', 
-    'section-block',
-    'animate-base',
-    'animate-visible',
-    'visible',
-    'fixed-header',
-    '-translate-y-full',
-    'carousel',
-    'carousel-container',
-    'review-item',
-    'reviews-carousel',
-    'modal-content',
-    'call-button',
-    'btn',
-    'btn-primary',
-    'btn-secondary',
-    'heading-xl',
-    'heading-lg'
-  ],
+safelist: [
+  // Оставьте только кастомные классы анимаций
+  'animate-base',
+  'animate-visible', 
+  'visible',
+  'hero-section',
+  'hero-item',
+  'section-block',
+  'fixed-header',
+  '-translate-y-full'
+],
   
   theme: {
     extend: {

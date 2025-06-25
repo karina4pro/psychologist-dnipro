@@ -115,15 +115,6 @@ body, html {
   #mobile-menu.open a:nth-child(4) { transition-delay: 0.4s; }
   #mobile-menu.open a:nth-child(5) { transition-delay: 0.5s; }
 
-.menu-icon {
-    @apply block w-full h-full flex items-center justify-center;
-    font-family: monospace;
-    font-size: 18px;
-    line-height: 1;
-    color: white !important;  /* Принудительно белый */
-    text-shadow: none;        /* Убирает тени */
-    -webkit-font-smoothing: antialiased; /* Сглаживание */
-}
   
   /* Кнопка звонка */
   .call-button {
