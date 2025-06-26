@@ -13,11 +13,22 @@
   }
   
   /* Применение базовой анимации к элементам */
-.hero-item,
 .section-block,
 .block,
 .item {
   @apply animate-base;
+}
+
+.hero-item {
+  @apply opacity-100 translate-y-0;
+}
+
+.hero-item-animated {
+  @apply animate-base;
+}
+
+.hero-item-animated.visible {
+  @apply animate-visible;
 }
 
 .section-block {
