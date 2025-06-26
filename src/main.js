@@ -9,24 +9,19 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // 1️⃣ Анимация главного экрана и секций
+// ИСПРАВЛЕННЫЙ КОД
 function initAnimations() {
     document.querySelectorAll(".hero-item").forEach((item, index) => {
-        // Первые 2 элемента (фото + текст) показываем сразу
-        if (index < 2) {
-            item.style.opacity = "1";
-            item.style.transform = "translateY(0)";
-            return;
-        }
-        
-        // Остальные элементы (кнопки) с анимацией
+        // Принудительно переопределяем стили Tailwind
         item.style.opacity = "0";
         item.style.transform = "translateY(20px)";
         item.style.transition = "opacity 0.5s ease-out, transform 0.5s ease-out";
         
+        // Красивая последовательность
         setTimeout(() => {
             item.style.opacity = "1";
             item.style.transform = "translateY(0)";
-        }, 50 + ((index - 2) * 100));
+        }, index * 150);
     });
     
     // 🚀 Анимация секций, блоков и элементов
