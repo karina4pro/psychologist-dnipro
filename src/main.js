@@ -10,18 +10,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // 1️⃣ Анимация главного экрана и секций
 function initAnimations() {
-    // 🚀 Анимация главного экрана (hero)
     document.querySelectorAll(".hero-item").forEach((item, index) => {
-        // Настройка стилей перед анимацией
+        // Первые 2 элемента (фото + текст) показываем сразу
+        if (index < 2) {
+            item.style.opacity = "1";
+            item.style.transform = "translateY(0)";
+            return;
+        }
+        
+        // Остальные элементы (кнопки) с анимацией
         item.style.opacity = "0";
         item.style.transform = "translateY(20px)";
         item.style.transition = "opacity 0.5s ease-out, transform 0.5s ease-out";
         
-        // Применение анимации с меньшей задержкой
         setTimeout(() => {
             item.style.opacity = "1";
             item.style.transform = "translateY(0)";
-        }, 100 + (index * 100)); // Уменьшил задержку между элементами до 100мс
+        }, 50 + ((index - 2) * 100));
     });
     
     // 🚀 Анимация секций, блоков и элементов
