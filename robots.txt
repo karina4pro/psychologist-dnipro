@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Блокируем служебные файлы
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /*.json
+Disallow: /*.js
+Disallow: /.git/
+
+# Указываем карту сайта
+Sitemap: https://www.karina-psychologist.com/sitemap.xml
