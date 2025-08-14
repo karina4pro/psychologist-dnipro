@@ -255,6 +255,8 @@ ol li {
   padding: 0 1rem; /* Компенсация отрицательного отступа */
 }
 
+
+
 .carousel {
   @apply flex items-center;
   overflow-x: auto;
