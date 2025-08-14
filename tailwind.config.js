@@ -1,28 +1,26 @@
 module.exports = {
-content: [
-  "./index.html", 
-  "./src/**/*.{html,js,css}",
-  "./**/*.html"
-],
-  
-safelist: [
-  // Оставьте только кастомные классы анимаций
-  'animate-base',
-  'animate-visible', 
-  'visible',
-  'hero-section',
-  'hero-item',
-  'section-block',
-  'fixed-header',
-  '-translate-y-full'
-],
-  
+  content: [
+    "./index.html",
+    "./src/**/*.{html,js,css}",
+    "./**/*.html",
+    "./components/**/*.js" // Добавлен путь к JS-файлам в папке components
+  ],
+  safelist: [
+    'animate-base',
+    'animate-visible',
+    'visible',
+    'hero-section',
+    'hero-item',
+    'section-block',
+    'fixed-header',
+    '-translate-y-full'
+  ],
   theme: {
     extend: {
       colors: {
         primary: {
           light: "#3B82F6",
-          DEFAULT: "#2563EB", 
+          DEFAULT: "#2563EB",
           dark: "#203351",
         },
         neutral: {

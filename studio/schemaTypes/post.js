@@ -26,12 +26,20 @@ export default defineType({
       to: {type: 'author'},
     }),
     defineField({
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+        name: 'mainImage',
+        title: 'Main image',
+        type: 'image',
+        options: {
+            hotspot: true,
+        },
+        fields: [
+            {
+                name: 'alt',
+                type: 'string',
+                title: 'Alt text',
+                description: 'Описание изображения для SEO',
+            }
+        ]
     }),
     defineField({
       name: 'categories',
