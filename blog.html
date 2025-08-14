@@ -106,7 +106,7 @@
             }`;
             
             // Используем CDN версию API для избежания CORS
-            const url = `https://${sanityConfig.projectId}.apicdn.sanity.io/v${sanityConfig.apiVersion}/data/query/${sanityConfig.dataset}?query=${encodeURIComponent(query)}`;
+            const url = `https://${sanityConfig.projectId}.api.sanity.io/v1/data/query/${sanityConfig.dataset}?query=${encodeURIComponent(query)}`;
             
             console.log('URL запроса:', url);
             
@@ -174,5 +174,6 @@
     // Загружаем посты при загрузке страницы
     document.addEventListener('DOMContentLoaded', loadPosts);
     </script>
+    <script src="src/main.js" defer></script>
 </body>
 </html>
