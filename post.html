@@ -12,6 +12,7 @@
     <meta property="og:title" content="">
     <meta property="og:description" content="">
     <meta property="og:url" content="">
+    <meta property="og:image" content="">
     <link rel="canonical" href="">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,6 +94,8 @@
                     "slug": slug.current,
                     publishedAt,
                     body,
+                    seoTitle,
+                    seoDescription,
                     mainImage{
                         asset,
                         alt
@@ -136,14 +139,19 @@
         function renderPost(post) {
             document.getElementById('loading').style.display = 'none';
             
-            // Обновляем title страницы
-            document.title = `${post.title} - Карина Варганова | Психолог Днепр`;
+            // Обновляем title страницы - УНИКАЛЬНЫЙ для каждой статьи
+            document.title = post.seoTitle || post.title;
 
             // Обновляем SEO метатеги
-            const description = post.body?.[0]?.children?.[0]?.text?.substring(0, 160) || post.title;
+            const description = post.seoDescription || post.body?.[0]?.children?.[0]?.text?.substring(0, 160) || post.title;
+            const ogImage = post.mainImage ? 
+                `https://cdn.sanity.io/images/i2ncx2dk/production/${post.mainImage.asset._ref.replace('image-', '').replace('-jpg', '.jpg').replace('-png', '.png')}` : 
+                'https://www.karina-psychologist.com/images/og-image.jpg';
+
             document.querySelector('meta[name="description"]').setAttribute('content', description);
-            document.querySelector('meta[property="og:title"]').setAttribute('content', post.title);
+            document.querySelector('meta[property="og:title"]').setAttribute('content', post.seoTitle || post.title);
             document.querySelector('meta[property="og:description"]').setAttribute('content', description);
+            document.querySelector('meta[property="og:image"]').setAttribute('content', ogImage);
             document.querySelector('meta[property="og:url"]').setAttribute('content', window.location.href);
             document.querySelector('link[rel="canonical"]').setAttribute('href', window.location.href);
             

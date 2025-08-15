@@ -57,8 +57,22 @@ export default defineType({
       title: 'Body',
       type: 'blockContent',
     }),
+    // SEO поля
+    defineField({
+      name: 'seoTitle',
+      title: 'SEO заголовок',
+      type: 'string',
+      description: 'Заголовок для поисковиков (до 60 символов). Если не заполнено - будет использован обычный заголовок',
+      validation: Rule => Rule.max(60).warning('Лучше до 60 символов')
+    }),
+    defineField({
+      name: 'seoDescription', 
+      title: 'SEO описание',
+      type: 'text',
+      description: 'Описание для поисковиков и соцсетей (до 160 символов)',
+      validation: Rule => Rule.max(160).warning('Лучше до 160 символов')
+    }),
   ],
-
   preview: {
     select: {
       title: 'title',
