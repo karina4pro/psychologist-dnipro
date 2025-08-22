@@ -154,6 +154,25 @@
             document.querySelector('meta[property="og:image"]').setAttribute('content', ogImage);
             document.querySelector('meta[property="og:url"]').setAttribute('content', window.location.href);
             document.querySelector('link[rel="canonical"]').setAttribute('href', window.location.href);
+            // Добавляем Structured Data
+            const structuredData = {
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "headline": post.title,
+                "author": {
+                    "@type": "Person", 
+                    "name": "Карина Варганова"
+                },
+                "datePublished": post.publishedAt,
+                "description": description,
+                "image": ogImage,
+                "url": window.location.href
+            };
+
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.textContent = JSON.stringify(structuredData);
+            document.head.appendChild(script);
             
             const container = document.getElementById('post-content');
             
