@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "api/post.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/post.html",
+      "destination": "/api/post"
+    }
+  ]
+}
