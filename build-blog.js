@@ -111,6 +111,7 @@ async function buildBlog() {
       <header class="mb-8">
         <h1 class="text-3xl font-bold mb-4 text-primary-dark">${post.title}</h1>
         ${post.publishedAt ? `<time class="text-neutral text-sm">${new Date(post.publishedAt).toLocaleDateString('ru-RU')}</time>` : ''}
+        ${post.mainImage ? `<img src="${ogImage}" alt="${post.mainImage.alt || ''}" class="w-full rounded-lg shadow-md my-8">` : ''}
       </header>
       <div class="prose prose-lg max-w-none">
         ${renderPortableText(post.body)}
