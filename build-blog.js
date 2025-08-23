@@ -27,9 +27,13 @@ const POST_TEMPLATE = `<!DOCTYPE html>
 <div id="header-placeholder"></div>
 <main class="pt-24 pb-16">
     <div class="container max-w-4xl">
-        <div class="mb-8">
-            <a href="../blog.html" class="inline-flex items-center text-primary hover:text-primary-dark">← Назад к блогу</a>
-        </div>
+        <nav class="mb-8">
+            <a href="../index.html" class="text-primary hover:text-primary-dark">Главная</a>
+            <span class="mx-2 text-neutral">→</span>
+            <a href="../blog.html" class="text-primary hover:text-primary-dark">Блог</a>
+            <span class="mx-2 text-neutral">→</span>
+            <span class="text-neutral-dark">{{TITLE}}</span>
+        </nav>
         <article class="bg-white rounded-lg shadow-md p-8">
             {{CONTENT}}
         </article>
@@ -75,7 +79,7 @@ function renderPortableText(blocks) {
     }
     
     if (block._type === 'image' && block.asset) {
-      const imageUrl = `https://cdn.sanity.io/images/i2ncx2dk/production/${block.asset._ref.replace('image-', '').replace('-jpg', '.jpg').replace('-png', '.png')}`;
+      const imageUrl = `https://cdn.sanity.io/images/i2ncx2dk/production/${block.asset._ref.replace('image-', '').replace(/-(\w+)$/, '.$1')}`;
       return `<img src="${imageUrl}" alt="${block.alt || ''}" class="w-full rounded-lg shadow-md my-8">`;
     }
     
@@ -100,7 +104,7 @@ async function buildBlog() {
     const seoTitle = post.seoTitle || post.title;
     const seoDescription = post.seoDescription || post.body?.[0]?.children?.[0]?.text?.substring(0, 160) || post.title;
     const ogImage = post.mainImage ? 
-      `https://cdn.sanity.io/images/i2ncx2dk/production/${post.mainImage.asset._ref.replace('image-', '').replace('-jpg', '.jpg')}` : 
+      `https://cdn.sanity.io/images/i2ncx2dk/production/${post.mainImage.asset._ref.replace('image-', '').replace(/-(\w+)$/, '.$1')}` : 
       'https://www.karina-psychologist.com/images/og-image.jpg';
     
     const content = `
@@ -125,6 +129,7 @@ async function buildBlog() {
     };
     
     const html = POST_TEMPLATE
+      .replace(/{{TITLE}}/g, post.title)
       .replace(/{{SEO_TITLE}}/g, seoTitle)
       .replace(/{{SEO_DESCRIPTION}}/g, seoDescription)
       .replace(/{{OG_IMAGE}}/g, ogImage)
