@@ -1,5 +1,4 @@
 const fs = require('fs');
-const path = require('path');
 
 const SANITY_CONFIG = {
   projectId: 'i2ncx2dk',
@@ -7,7 +6,6 @@ const SANITY_CONFIG = {
   apiVersion: '2024-05-15'
 };
 
-// Шаблон статьи
 const POST_TEMPLATE = `<!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
@@ -20,6 +18,7 @@ const POST_TEMPLATE = `<!DOCTYPE html>
    <meta property="og:image" content="{{OG_IMAGE}}">
    <meta property="og:url" content="https://www.karina-psychologist.com/blog/{{SLUG}}.html">
    <link rel="canonical" href="https://www.karina-psychologist.com/blog/{{SLUG}}.html">
+   <link rel="icon" type="image/x-icon" href="../favicon.ico">
    <link href="../dist/output.css" rel="stylesheet">
    <script type="application/ld+json">{{STRUCTURED_DATA}}</script>
 </head>
@@ -36,6 +35,24 @@ const POST_TEMPLATE = `<!DOCTYPE html>
         </nav>
         <article class="bg-white rounded-lg shadow-md p-8">
             {{CONTENT}}
+            
+            <!-- Перелинковка -->
+            <footer class="mt-12 pt-8 border-t border-neutral-light">
+                <div class="text-center mb-8">
+                    <h3 class="text-xl font-bold mb-4 text-primary-dark">Нужна помощь психолога?</h3>
+                    <p class="mb-4 text-neutral">Запишитесь на индивидуальную консультацию</p>
+                    <a href="../index.html#contact" class="btn btn-primary inline-block">
+                        Записаться на консультацию
+                    </a>
+                </div>
+                
+                <div class="mt-8">
+                    <h4 class="text-lg font-bold mb-4 text-primary-dark">📚 Читайте также:</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {{RELATED_ARTICLES}}
+                    </div>
+                </div>
+            </footer>
         </article>
     </div>
 </main>
@@ -48,7 +65,7 @@ const POST_TEMPLATE = `<!DOCTYPE html>
 </html>`;
 
 async function fetchPosts() {
-  const query = `*[_type == "post"] {
+  const query = `*[_type == "post"] | order(publishedAt desc) {
     title, "slug": slug.current, publishedAt, body, seoTitle, seoDescription,
     mainImage{asset, alt}
   }`;
@@ -74,6 +91,8 @@ function renderPortableText(blocks) {
       switch (block.style) {
         case 'h1': return `<h1 class="text-3xl font-bold mb-6 text-primary-dark">${text}</h1>`;
         case 'h2': return `<h2 class="text-2xl font-bold mb-4 text-primary-dark">${text}</h2>`;
+        case 'h3': return `<h3 class="text-xl font-bold mb-3 text-primary-dark">${text}</h3>`;
+        case 'blockquote': return `<blockquote class="border-l-4 border-primary pl-4 italic mb-4">${text}</blockquote>`;
         default: return `<p class="mb-4 leading-relaxed">${text}</p>`;
       }
     }
@@ -87,16 +106,32 @@ function renderPortableText(blocks) {
   }).join('');
 }
 
+function generateRelatedArticles(currentSlug, allPosts) {
+  const otherPosts = allPosts.filter(post => post.slug !== currentSlug).slice(0, 4);
+  
+  return otherPosts.map(post => `
+    <a href="${post.slug}.html" class="block p-4 bg-neutral-light rounded-lg hover:bg-primary-light transition-colors">
+      <h5 class="font-semibold text-primary-dark">${post.title}</h5>
+      <p class="text-sm text-neutral mt-1">Читать статью →</p>
+    </a>
+  `).join('');
+}
+
 async function buildBlog() {
   console.log('🚀 Генерация статичных страниц блога...');
   
-  // Создаем папку blog если её нет
   if (!fs.existsSync('blog')) {
     fs.mkdirSync('blog');
   }
   
   const posts = await fetchPosts();
   console.log(`📝 Найдено ${posts.length} статей`);
+  
+  // Генерируем обновленный sitemap
+  const sitemapUrls = [
+    '<url><loc>https://www.karina-psychologist.com/</loc><lastmod>2025-08-25</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>',
+    '<url><loc>https://www.karina-psychologist.com/blog.html</loc><lastmod>2025-08-25</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>'
+  ];
   
   for (const post of posts) {
     if (!post.slug) continue;
@@ -118,6 +153,8 @@ async function buildBlog() {
       </div>
     `;
     
+    const relatedArticles = generateRelatedArticles(post.slug, posts);
+    
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -136,11 +173,25 @@ async function buildBlog() {
       .replace(/{{OG_IMAGE}}/g, ogImage)
       .replace(/{{SLUG}}/g, post.slug)
       .replace(/{{CONTENT}}/g, content)
+      .replace(/{{RELATED_ARTICLES}}/g, relatedArticles)
       .replace(/{{STRUCTURED_DATA}}/g, JSON.stringify(structuredData));
     
     fs.writeFileSync(`blog/${post.slug}.html`, html);
     console.log(`✅ Создан файл: blog/${post.slug}.html`);
+    
+    // Добавляем в sitemap
+    const lastmod = post.publishedAt ? new Date(post.publishedAt).toISOString().split('T')[0] : '2025-08-25';
+    sitemapUrls.push(`<url><loc>https://www.karina-psychologist.com/blog/${post.slug}.html</loc><lastmod>${lastmod}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`);
   }
+  
+  // Создаем новый sitemap
+  const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapUrls.join('\n')}
+</urlset>`;
+  
+  fs.writeFileSync('sitemap.xml', sitemapContent);
+  console.log('🗺️ Sitemap обновлен');
   
   console.log('🎉 Генерация завершена!');
 }
