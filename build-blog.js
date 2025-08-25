@@ -77,20 +77,25 @@ function renderPortableText(blocks) {
   
   return blocks.map(block => {
     if (block._type === 'block') {
+      // Получаем определения аннотаций (ссылки хранятся здесь)
+      const markDefs = block.markDefs || [];
+      
       const text = block.children?.map(child => {
         let content = child.text || '';
         
-        // Обрабатываем marks
-        if (child.marks) {
+        if (child.marks && child.marks.length > 0) {
           child.marks.forEach(mark => {
             if (mark === 'strong') {
               content = `<strong>${content}</strong>`;
             } else if (mark === 'em') {
               content = `<em>${content}</em>`;
-            } else if (typeof mark === 'object' && mark._type === 'link') {
-              // Обрабатываем ссылки
-              const href = mark.href || '#';
-              content = `<a href="${href}" class="text-primary hover:text-primary-dark hover:underline">${content}</a>`;
+            } else {
+              // Ищем аннотацию (ссылку) в markDefs по ключу
+              const annotation = markDefs.find(def => def._key === mark);
+              if (annotation && annotation._type === 'link') {
+                const href = annotation.href || '#';
+                content = `<a href="${href}" class="text-primary hover:text-primary-dark hover:underline transition-colors">${content}</a>`;
+              }
             }
           });
         }
@@ -99,9 +104,11 @@ function renderPortableText(blocks) {
       }).join('') || '';
       
       switch (block.style) {
+        case 'normal': return `<p class="mb-4 leading-relaxed">${text}</p>`;
         case 'h1': return `<h1 class="text-3xl font-bold mb-6 text-primary-dark">${text}</h1>`;
         case 'h2': return `<h2 class="text-2xl font-bold mb-4 text-primary-dark">${text}</h2>`;
         case 'h3': return `<h3 class="text-xl font-bold mb-3 text-primary-dark">${text}</h3>`;
+        case 'h4': return `<h4 class="text-lg font-bold mb-2 text-primary-dark">${text}</h4>`;
         case 'blockquote': return `<blockquote class="border-l-4 border-primary pl-4 italic mb-4">${text}</blockquote>`;
         default: return `<p class="mb-4 leading-relaxed">${text}</p>`;
       }
