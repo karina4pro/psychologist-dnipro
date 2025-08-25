@@ -79,8 +79,22 @@ function renderPortableText(blocks) {
     if (block._type === 'block') {
       const text = block.children?.map(child => {
         let content = child.text || '';
-        if (child.marks?.includes('strong')) content = `<strong>${content}</strong>`;
-        if (child.marks?.includes('em')) content = `<em>${content}</em>`;
+        
+        // Обрабатываем marks
+        if (child.marks) {
+          child.marks.forEach(mark => {
+            if (mark === 'strong') {
+              content = `<strong>${content}</strong>`;
+            } else if (mark === 'em') {
+              content = `<em>${content}</em>`;
+            } else if (typeof mark === 'object' && mark._type === 'link') {
+              // Обрабатываем ссылки
+              const href = mark.href || '#';
+              content = `<a href="${href}" class="text-primary hover:text-primary-dark hover:underline">${content}</a>`;
+            }
+          });
+        }
+        
         return content;
       }).join('') || '';
       
