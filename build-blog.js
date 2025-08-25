@@ -113,7 +113,7 @@ function generateRelatedArticles(currentSlug, allPosts) {
   const otherPosts = allPosts.filter(post => post.slug !== currentSlug).slice(0, 4);
   
   return otherPosts.map(post => `
-    <a href="${post.slug}.html" class="block p-4 bg-gray-50 border border-gray-200 rounded-lg hover:bg-primary-light hover:border-primary transition-colors">
+    <a href="${post.slug}.html" class="block p-4 border border-gray-200 rounded-lg hover:bg-primary-light hover:text-primary-dark hover:border-primary transition-colors text-primary">
       <h5 class="font-semibold text-primary-dark">${post.title}</h5>
       <p class="text-sm text-neutral mt-1">Читать статью →</p>
     </a>
