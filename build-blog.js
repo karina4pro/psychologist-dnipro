@@ -18,7 +18,10 @@ const POST_TEMPLATE = `<!DOCTYPE html>
    <meta property="og:image" content="{{OG_IMAGE}}">
    <meta property="og:url" content="https://www.karina-psychologist.com/blog/{{SLUG}}.html">
    <link rel="canonical" href="https://www.karina-psychologist.com/blog/{{SLUG}}.html">
-   <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
    <link href="../dist/output.css" rel="stylesheet">
    <script type="application/ld+json">{{STRUCTURED_DATA}}</script>
 </head>
@@ -110,7 +113,7 @@ function generateRelatedArticles(currentSlug, allPosts) {
   const otherPosts = allPosts.filter(post => post.slug !== currentSlug).slice(0, 4);
   
   return otherPosts.map(post => `
-    <a href="${post.slug}.html" class="block p-4 bg-neutral-light rounded-lg hover:bg-primary-light transition-colors">
+    <a href="${post.slug}.html" class="block p-4 bg-gray-50 border border-gray-200 rounded-lg hover:bg-primary-light hover:border-primary transition-colors">
       <h5 class="font-semibold text-primary-dark">${post.title}</h5>
       <p class="text-sm text-neutral mt-1">Читать статью →</p>
     </a>
