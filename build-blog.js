@@ -25,7 +25,7 @@ const POST_TEMPLATE = `<!DOCTYPE html>
    <link href="../dist/output.css" rel="stylesheet">
    <script type="application/ld+json">{{STRUCTURED_DATA}}</script>
 </head>
-<body class="bg-neutral-light text-neutral-dark">
+<body class="bg-neutral-light text-gray-900">
 <div id="header-placeholder"></div>
 <main class="pt-24 pb-16">
     <div class="container max-w-4xl">
@@ -39,21 +39,14 @@ const POST_TEMPLATE = `<!DOCTYPE html>
         <article class="bg-white rounded-lg shadow-md p-8">
             {{CONTENT}}
             
-            <!-- Перелинковка -->
+            <!-- CTA блок психолога -->
             <footer class="mt-12 pt-8 border-t border-neutral-light">
-                <div class="text-center mb-8">
+                <div class="text-center">
                     <h3 class="text-xl font-bold mb-4 text-primary-dark">Нужна помощь психолога?</h3>
                     <p class="mb-4 text-neutral">Запишитесь на индивидуальную консультацию</p>
-                    <a href="../index.html#contact" class="btn btn-primary inline-block">
+                    <a href="../index.html#contact" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors inline-block">
                         Записаться на консультацию
                     </a>
-                </div>
-                
-                <div class="mt-8">
-                    <h4 class="text-lg font-bold mb-4 text-primary-dark">📚 Читайте также:</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {{RELATED_ARTICLES}}
-                    </div>
                 </div>
             </footer>
         </article>
@@ -109,17 +102,6 @@ function renderPortableText(blocks) {
   }).join('');
 }
 
-function generateRelatedArticles(currentSlug, allPosts) {
-  const otherPosts = allPosts.filter(post => post.slug !== currentSlug).slice(0, 4);
-  
-  return otherPosts.map(post => `
-    <a href="${post.slug}.html" class="block p-4 border border-gray-200 rounded-lg hover:bg-primary-light hover:text-primary-dark hover:border-primary transition-colors text-primary">
-      <h5 class="font-semibold text-primary-dark">${post.title}</h5>
-      <p class="text-sm text-neutral mt-1">Читать статью →</p>
-    </a>
-  `).join('');
-}
-
 async function buildBlog() {
   console.log('🚀 Генерация статичных страниц блога...');
   
@@ -156,8 +138,6 @@ async function buildBlog() {
       </div>
     `;
     
-    const relatedArticles = generateRelatedArticles(post.slug, posts);
-    
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -176,7 +156,6 @@ async function buildBlog() {
       .replace(/{{OG_IMAGE}}/g, ogImage)
       .replace(/{{SLUG}}/g, post.slug)
       .replace(/{{CONTENT}}/g, content)
-      .replace(/{{RELATED_ARTICLES}}/g, relatedArticles)
       .replace(/{{STRUCTURED_DATA}}/g, JSON.stringify(structuredData));
     
     fs.writeFileSync(`blog/${post.slug}.html`, html);
