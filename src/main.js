@@ -257,29 +257,8 @@ function initCarousel(carouselSelector = ".carousel", itemSelector = "img") {
        carousel.scrollLeft = scrollLeft - walk;
    });
    
-   // События для мобильных устройств
-   let touchStartX, touchStartScrollLeft;
-   
-   carousel.addEventListener("touchstart", (e) => {
-       touchStartX = e.touches[0].clientX;
-       touchStartScrollLeft = carousel.scrollLeft;
-       e.preventDefault();
-   });
-   
-   carousel.addEventListener("touchmove", (e) => {
-       if (touchStartX === null) return;
-       const touchX = e.touches[0].clientX;
-       const deltaX = touchX - touchStartX;
-       
-       carousel.scrollLeft = touchStartScrollLeft - deltaX;
-       e.preventDefault();
-   });
-   
-   carousel.addEventListener("touchend", (e) => {
-       touchStartX = null;
-       e.preventDefault();
-       setTimeout(snapToNearestItem, 50);
-   });
+
+
    
    // Добавляем кнопки навигации
    const carouselContainer = carousel.closest(".carousel-container");

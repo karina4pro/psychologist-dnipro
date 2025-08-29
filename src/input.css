@@ -265,6 +265,7 @@ ol li {
   scrollbar-width: none; /* Скрываем полосу прокрутки для Firefox */
   -ms-overflow-style: none; /* Скрываем полосу прокрутки для IE/Edge */
   padding: 1rem 0;
+  touch-action: pan-x; /* нативный свайп браузера */
 }
 
 /* Скрываем полосу прокрутки для Chrome/Safari */
