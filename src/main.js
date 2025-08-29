@@ -272,13 +272,12 @@ carousel.addEventListener("touchmove", (e) => {
     const deltaX = Math.abs(touchX - touchStartX);
     const deltaY = Math.abs(touchY - touchStartY);
     
-    // Только если четкий горизонтальный свайп
-    if (deltaX > deltaY && deltaX > 15) {
-        const walk = (touchX - touchStartX) * 1.5;
+    // Если горизонтальное движение преобладает
+    if (deltaX > deltaY && deltaX > 5) {
+        const walk = (touchX - touchStartX) * 0.8;
         carousel.scrollLeft = scrollLeft - walk;
         e.preventDefault();
     }
-    // Иначе разрешаем вертикальный скролл страницы
 });
     
     carousel.addEventListener("touchend", () => {
