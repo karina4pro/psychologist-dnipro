@@ -197,143 +197,128 @@ function initModals() {
 }
 
 // Оптимизированная функция для карусели
+// Оптимизированная функция для карусели
 function initCarousel(carouselSelector = ".carousel", itemSelector = "img") {
-    const carousel = document.querySelector(carouselSelector);
-    if (!carousel) return;
-    
-    // Удаляем существующие кнопки навигации
-    carousel.closest(".carousel-container")?.querySelectorAll(".carousel-nav-button").forEach(btn => btn.remove());
-    
-    // Общие настройки карусели
-    carousel.style.scrollBehavior = "smooth";
-    carousel.style.scrollSnapType = "x mandatory";
-    carousel.style.cursor = "grab";
-    
-    // Функция для прокрутки к ближайшему элементу
-    function snapToNearestItem() {
-        const items = carousel.querySelectorAll(itemSelector);
-        if (items.length === 0) return;
-        
-        const item = items[0];
-        const itemWidth = item.offsetWidth + parseInt(getComputedStyle(item).marginRight || "0");
-        const scrollPosition = carousel.scrollLeft;
-        const itemIndex = Math.round(scrollPosition / itemWidth);
-        
-        carousel.scrollTo({
-            left: itemIndex * itemWidth,
-            behavior: 'smooth'
-        });
-    }
-    
-    // События для desktop
-    let isDragging = false;
-    let startX, scrollLeft;
-    
-    carousel.addEventListener("mousedown", (e) => {
-        isDragging = true;
-        startX = e.pageX - carousel.offsetLeft;
-        scrollLeft = carousel.scrollLeft;
-        carousel.style.cursor = "grabbing";
-        e.preventDefault();
-    });
-    
-    carousel.addEventListener("mouseleave", () => {
-        isDragging = false;
-        carousel.style.cursor = "grab";
-    });
-    
-    carousel.addEventListener("mouseup", () => {
-        isDragging = false;
-        carousel.style.cursor = "grab";
-        snapToNearestItem();
-    });
-    
-    carousel.addEventListener("mousemove", (e) => {
-        if (!isDragging) return;
-        e.preventDefault();
-        const x = e.pageX - carousel.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        carousel.scrollLeft = scrollLeft - walk;
-    });
-    
-    // События для мобильных устройств
-let touchStartX, touchStartY;
-    
-carousel.addEventListener("touchstart", (e) => {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY; // ДОБАВИТЬ ЭТУ СТРОКУ
-    scrollLeft = carousel.scrollLeft;
-});
-    
-carousel.addEventListener("touchmove", (e) => {
-    if (!touchStartX) return;
-    const touchX = e.touches[0].clientX;
-    const touchY = e.touches[0].clientY;
-    const deltaX = Math.abs(touchX - touchStartX);
-    const deltaY = Math.abs(touchY - touchStartY);
-    
-    // Если горизонтальное движение преобладает
-    if (deltaX > deltaY && deltaX > 5) {
-        const walk = (touchX - touchStartX) * 0.8;
-        carousel.scrollLeft = scrollLeft - walk;
-        e.preventDefault();
-    }
-});
-    
-    carousel.addEventListener("touchend", () => {
-        touchStartX = null;
-        snapToNearestItem();
-    });
-    
-    // Добавляем кнопки навигации
-    const carouselContainer = carousel.closest(".carousel-container");
-    
-    // Кнопка "Предыдущий"
-    const prevButton = document.createElement("button");
-    prevButton.innerHTML = "&#10094;";
-    prevButton.className = "carousel-nav-button bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center absolute left-2 top-1/2 transform -translate-y-1/2 z-10 focus:outline-none";
-    prevButton.addEventListener("click", () => {
-        const items = carousel.querySelectorAll(itemSelector);
-        if (items.length === 0) return;
-        
-        const item = items[0];
-        const itemWidth = item.offsetWidth + parseInt(getComputedStyle(item).marginRight || "0");
-        carousel.scrollBy({
-            left: -itemWidth,
-            behavior: "smooth"
-        });
-    });
-    
-    // Кнопка "Следующий"
-    const nextButton = document.createElement("button");
-    nextButton.innerHTML = "&#10095;";
-    nextButton.className = "carousel-nav-button bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center absolute right-2 top-1/2 transform -translate-y-1/2 z-10 focus:outline-none";
-    nextButton.addEventListener("click", () => {
-        const items = carousel.querySelectorAll(itemSelector);
-        if (items.length === 0) return;
-        
-        const item = items[0];
-        const itemWidth = item.offsetWidth + parseInt(getComputedStyle(item).marginRight || "0");
-        carousel.scrollBy({
-            left: itemWidth,
-            behavior: "smooth"
-        });
-    });
-    
-    carouselContainer.appendChild(prevButton);
-    carouselContainer.appendChild(nextButton);
-    
-    // Начальная позиция
-    setTimeout(snapToNearestItem, 100);
-}
-
-// Инициализация карусели отзывов - вызов обобщенной функции
-function initReviewsCarousel() {
-    initCarousel(".reviews-carousel", ".review-item");
-}
-
-// Для сохранения совместимости со старым кодом
-// Инициализация стандартной карусели
-function initCarouselOriginal() {
-    initCarousel(".carousel", "img");
+   const carousel = document.querySelector(carouselSelector);
+   if (!carousel) return;
+   
+   // Удаляем существующие кнопки навигации
+   carousel.closest(".carousel-container")?.querySelectorAll(".carousel-nav-button").forEach(btn => btn.remove());
+   
+   // Общие настройки карусели
+   carousel.style.scrollBehavior = "smooth";
+   carousel.style.scrollSnapType = "x mandatory";
+   carousel.style.cursor = "grab";
+   
+   // Функция для прокрутки к ближайшему элементу
+   function snapToNearestItem() {
+       const items = carousel.querySelectorAll(itemSelector);
+       if (items.length === 0) return;
+       
+       const item = items[0];
+       const itemWidth = item.offsetWidth + parseInt(getComputedStyle(item).marginRight || "0");
+       const scrollPosition = carousel.scrollLeft;
+       const itemIndex = Math.round(scrollPosition / itemWidth);
+       
+       carousel.scrollTo({
+           left: itemIndex * itemWidth,
+           behavior: 'smooth'
+       });
+   }
+   
+   // События для desktop
+   let isDragging = false;
+   let startX, scrollLeft;
+   
+   carousel.addEventListener("mousedown", (e) => {
+       isDragging = true;
+       startX = e.pageX - carousel.offsetLeft;
+       scrollLeft = carousel.scrollLeft;
+       carousel.style.cursor = "grabbing";
+       e.preventDefault();
+   });
+   
+   carousel.addEventListener("mouseleave", () => {
+       isDragging = false;
+       carousel.style.cursor = "grab";
+   });
+   
+   carousel.addEventListener("mouseup", () => {
+       isDragging = false;
+       carousel.style.cursor = "grab";
+       snapToNearestItem();
+   });
+   
+   carousel.addEventListener("mousemove", (e) => {
+       if (!isDragging) return;
+       e.preventDefault();
+       const x = e.pageX - carousel.offsetLeft;
+       const walk = (x - startX) * 1.5;
+       carousel.scrollLeft = scrollLeft - walk;
+   });
+   
+   // События для мобильных устройств
+   let touchStartX, touchStartScrollLeft;
+   
+   carousel.addEventListener("touchstart", (e) => {
+       touchStartX = e.touches[0].clientX;
+       touchStartScrollLeft = carousel.scrollLeft;
+       e.preventDefault();
+   });
+   
+   carousel.addEventListener("touchmove", (e) => {
+       if (touchStartX === null) return;
+       const touchX = e.touches[0].clientX;
+       const deltaX = touchX - touchStartX;
+       
+       carousel.scrollLeft = touchStartScrollLeft - deltaX;
+       e.preventDefault();
+   });
+   
+   carousel.addEventListener("touchend", (e) => {
+       touchStartX = null;
+       e.preventDefault();
+       setTimeout(snapToNearestItem, 50);
+   });
+   
+   // Добавляем кнопки навигации
+   const carouselContainer = carousel.closest(".carousel-container");
+   
+   // Кнопка "Предыдущий"
+   const prevButton = document.createElement("button");
+   prevButton.innerHTML = "&#10094;";
+   prevButton.className = "carousel-nav-button bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center absolute left-2 top-1/2 transform -translate-y-1/2 z-10 focus:outline-none";
+   prevButton.addEventListener("click", () => {
+       const items = carousel.querySelectorAll(itemSelector);
+       if (items.length === 0) return;
+       
+       const item = items[0];
+       const itemWidth = item.offsetWidth + parseInt(getComputedStyle(item).marginRight || "0");
+       carousel.scrollBy({
+           left: -itemWidth,
+           behavior: "smooth"
+       });
+   });
+   
+   // Кнопка "Следующий"
+   const nextButton = document.createElement("button");
+   nextButton.innerHTML = "&#10095;";
+   nextButton.className = "carousel-nav-button bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center absolute right-2 top-1/2 transform -translate-y-1/2 z-10 focus:outline-none";
+   nextButton.addEventListener("click", () => {
+       const items = carousel.querySelectorAll(itemSelector);
+       if (items.length === 0) return;
+       
+       const item = items[0];
+       const itemWidth = item.offsetWidth + parseInt(getComputedStyle(item).marginRight || "0");
+       carousel.scrollBy({
+           left: itemWidth,
+           behavior: "smooth"
+       });
+   });
+   
+   carouselContainer.appendChild(prevButton);
+   carouselContainer.appendChild(nextButton);
+   
+   // Начальная позиция
+   setTimeout(snapToNearestItem, 100);
 }
