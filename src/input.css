@@ -274,13 +274,11 @@ ol li {
 }
 
 .certificate-image {
-  @apply flex-shrink-0 rounded-lg shadow-md;
-  width: 250px; /* Фиксированная ширина для последовательной прокрутки */
-  height: auto;
-  max-height: 350px; /* Ограничиваем высоту */
-  object-fit: contain;
+  @apply flex-shrink-0 rounded-lg shadow-md bg-gray-50;
+  width: 280px; /* Увеличил немного для лучшего вида */
+  height: 350px; /* Фиксированная высота контейнера */
+  object-fit: contain; /* Сохраняет пропорции, добавляет отступы */
   scroll-snap-align: start;
-  /* Убираем эффект при наведении */
   transition: none;
 }
 
